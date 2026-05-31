@@ -5,11 +5,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class User implements UserDetails {
+public class Hr implements UserDetails {
     private Integer id;
     private String username;
     private String password;
@@ -18,16 +19,21 @@ public class User implements UserDetails {
     private String email;
     private Boolean enabled;
 
-    // 角色列表
     private List<Role> roles;
 
+    // ====================== 只有这里改了 ======================
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        // 先判断 roles 是否为 null，是空就返回空列表，不报错
+        if (roles == null) {
+            return new ArrayList<>();
+        }
         return roles.stream()
                 .map(r -> new SimpleGrantedAuthority(r.getName()))
                 .collect(Collectors.toList());
     }
+    // ==========================================================
 
     @Override
     public boolean isAccountNonExpired() {
@@ -49,7 +55,6 @@ public class User implements UserDetails {
         return enabled;
     }
 
-    // getter/setter
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
     public String getUsername() { return username; }

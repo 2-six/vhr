@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.vhr.mapper.UserMapper">
 
-    <resultMap id="UserMap" type="com.example.vhr.entity.User">
+<!-- 1. namespace 改成 HrMapper -->
+<mapper namespace="com.example.vhr.mapper.HrMapper">
+
+    <!-- 2. type 改成 Hr -->
+    <resultMap id="HrMap" type="com.example.vhr.entity.Hr">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
@@ -18,7 +21,8 @@
         </collection>
     </resultMap>
 
-    <select id="loadUserByUsername" resultMap="UserMap">
+    <!-- id 保持 loadUserByUsername，不用改 -->
+    <select id="loadUserByUsername" resultMap="HrMap">
         SELECT h.*, r.id rid, r.name rname, r.name_zh rnamezh
         FROM hr h
         LEFT JOIN hr_role hrr ON h.id = hrr.hr_id
