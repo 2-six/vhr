@@ -65,6 +65,7 @@ public class SecurityConfig {
                         .requestMatchers("/position/**").permitAll()
                         .requestMatchers("/joblevel/**").permitAll()
                         .requestMatchers("/department/**").permitAll()
+                        .requestMatchers("/employee/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
