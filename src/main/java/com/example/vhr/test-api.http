@@ -1,0 +1,12 @@
+### 1. 登录获取 token
+POST http://localhost:8082/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+### 2. 查询职位列表（把下面的 你的token 替换成登录返回的 data）
+GET http://localhost:8082/position/
+Authorization: Bearer 你的token
