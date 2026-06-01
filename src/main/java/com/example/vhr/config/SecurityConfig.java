@@ -64,9 +64,9 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/joblevel/**").permitAll() // 放行职称接口
                         .anyRequest().authenticated()
                 )
-                // 把 JWT 过滤器加进来
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
