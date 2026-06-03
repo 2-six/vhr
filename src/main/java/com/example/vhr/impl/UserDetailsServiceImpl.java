@@ -1,6 +1,7 @@
-package com.example.vhr.service;
+package com.example.vhr.impl;
 
 import com.example.vhr.entity.Hr;
+import com.example.vhr.service.HrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;

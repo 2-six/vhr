@@ -1,6 +1,6 @@
 package com.example.vhr.exception;
 
-import com.example.vhr.entity.RespBean;
+import com.example.vhr.utils.RespBean;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

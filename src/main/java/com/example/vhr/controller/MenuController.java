@@ -2,7 +2,7 @@ package com.example.vhr.controller;
 
 import com.example.vhr.entity.Hr;
 import com.example.vhr.entity.Menu;
-import com.example.vhr.entity.RespBean;
+import com.example.vhr.utils.RespBean;
 import com.example.vhr.service.MenuService;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,17 +1,25 @@
 package com.example.vhr.mapper;
 
-import com.example.vhr.entity.Hr; // 改为 Hr
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.example.vhr.entity.Hr;
+import org.apache.ibatis.annotations.*;
+import java.util.List;
 
 @Mapper
 public interface HrMapper {
 
-    // 根据用户名查询用户（带角色）
-    Hr loadUserByUsername(@Param("username") String username);
-
-    // 关键：表名改为 hr
-    @Select("SELECT * FROM hr WHERE username = #{username}")
+    @Select("select * from hr where username=#{username}")
     Hr getHrByUsername(String username);
+
+    @Insert("insert into hr(username,password,name,phone,address,enabled) " +
+            "values(#{username},#{password},#{name},#{phone},#{address},#{enabled})")
+    void addHr(Hr hr);
+
+    @Update("update hr set username=#{username},name=#{name},phone=#{phone},address=#{address} where id=#{id}")
+    void updateHr(Hr hr);
+
+    @Delete("delete from hr where id=#{id}")
+    void deleteHr(Integer id);
+
+    @Select("select * from hr")
+    List<Hr> getAllHr();
 }

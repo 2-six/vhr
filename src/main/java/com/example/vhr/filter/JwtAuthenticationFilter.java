@@ -1,6 +1,6 @@
 package com.example.vhr.filter;
 
-import com.example.vhr.service.UserDetailsServiceImpl;
+import com.example.vhr.impl.UserDetailsServiceImpl;
 import com.example.vhr.utils.JwtUtil;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

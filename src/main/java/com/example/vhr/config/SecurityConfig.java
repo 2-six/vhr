@@ -61,6 +61,10 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        // 放行Vue首页+全部静态资源
+                        .requestMatchers("/", "/index.html").permitAll()
+                        .requestMatchers("/assets/**", "/*.ico", "/*.png", "/*.jpg", "/*.css", "/*.js").permitAll()
+                        // 原有开放接口不动
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/position/**").permitAll()
                         .requestMatchers("/joblevel/**").permitAll()

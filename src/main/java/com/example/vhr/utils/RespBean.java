@@ -1,4 +1,4 @@
-package com.example.vhr.entity;
+package com.example.vhr.utils;
 
 public class RespBean {
     private Integer code;

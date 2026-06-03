@@ -1,7 +1,7 @@
 package com.example.vhr.controller;
 
 import com.example.vhr.entity.LoginParam;
-import com.example.vhr.entity.RespBean;
+import com.example.vhr.utils.RespBean;
 import com.example.vhr.utils.JwtUtil;  // 等下我给你这个类
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
