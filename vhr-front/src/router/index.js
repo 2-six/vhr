@@ -12,7 +12,7 @@ const routes = [
       { path: '', component: () => import('../views/Welcome.vue') },
        { path: 'department', component: () => import('../views/Department.vue') },
       { path: 'position', component: () => import('../views/Position.vue') },
-      // { path: 'joblevel', component: () => import('../views/JobLevel.vue') },
+       { path: 'joblevel', component: () => import('../views/JobLevel.vue') },
       // { path: 'employee', component: () => import('../views/Employee.vue') }
     ]
   }
