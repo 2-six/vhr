@@ -32,20 +32,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         String authHeader = request.getHeader("Authorization");
-        String token = null;
-        String username = null;
 
-        // 🔥 修复：没有 Authorization 头，直接放行
-        if (authHeader == null) {
+        // ====================== 【核心修复 1】没 token 直接放行 ======================
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        if (authHeader.startsWith("Bearer ")) {
-            token = authHeader.substring(7);
+        // 有 token 才解析
+        String token = authHeader.substring(7);
+        String username = null;
+        try {
             username = jwtUtil.getUsernameFromToken(token);
+        } catch (Exception e) {
+            // ====================== 【核心修复 2】解析异常直接放行，不崩溃 ======================
+            filterChain.doFilter(request, response);
+            return;
         }
 
+        // 正常登录逻辑
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
