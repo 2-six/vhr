@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.vhr.mapper.PositionMapper">
+
+    <!-- 列表查询 -->
+    <select id="getAllPos" resultType="com.example.vhr.entity.Position">
+        select id,name,create_date createDate from `position` order by create_date desc
+    </select>
+
+    <!-- 新增（重点！加反引号 `` 包裹关键字！） -->
+    <insert id="addPos" useGeneratedKeys="true" keyProperty="id">
+        insert into `position`(name,create_date) values(#{name},now())
+    </insert>
+
+    <!-- 修改 -->
+    <update id="updatePos">
+        update `position` set name=#{name} where id=#{id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteById">
+        delete from `position` where id=#{id}
+    </delete>
+
+    <!-- 批量删除 -->
+    <delete id="deleteBatch">
+        delete from `position` where id in
+        <foreach collection="ids" item="item" open="(" separator="," close=")">#{item}</foreach>
+    </delete>
+
+</mapper>

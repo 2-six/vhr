@@ -4,8 +4,9 @@ import com.example.vhr.entity.Position;
 import java.util.List;
 
 public interface PositionService {
-    List<Position> getAllPositions();
-    int addPosition(Position position);
-    int updatePosition(Position position);
-    int deletePosition(Integer id);
+    List<Position> getAllPos();
+    int addPos(Position pos);
+    int updatePos(Position pos);
+    int deleteById(Integer id);
+    int deleteBatch(Integer[] ids);
 }

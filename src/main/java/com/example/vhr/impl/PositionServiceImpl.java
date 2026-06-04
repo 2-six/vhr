@@ -3,34 +3,39 @@ package com.example.vhr.service.impl;
 import com.example.vhr.entity.Position;
 import com.example.vhr.mapper.PositionMapper;
 import com.example.vhr.service.PositionService;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
-// 必须加 @Service！！！
 @Service
 public class PositionServiceImpl implements PositionService {
 
-    @Resource
+    @Autowired
     private PositionMapper positionMapper;
 
     @Override
-    public List<Position> getAllPositions() {
-        return positionMapper.getAllPositions();
+    public List<Position> getAllPos() {
+        return positionMapper.getAllPos();
     }
 
     @Override
-    public int addPosition(Position position) {
-        return positionMapper.addPosition(position);
+    public int addPos(Position pos) {
+        return positionMapper.addPos(pos);
     }
 
     @Override
-    public int updatePosition(Position position) {
-        return positionMapper.updatePosition(position);
+    public int updatePos(Position pos) {
+        return positionMapper.updatePos(pos);
     }
 
     @Override
-    public int deletePosition(Integer id) {
-        return positionMapper.deletePosition(id);
+    public int deleteById(Integer id) {
+        return positionMapper.deleteById(id);
+    }
+
+    @Override
+    public int deleteBatch(Integer[] ids) {
+        return positionMapper.deleteBatch(ids);
     }
 }
